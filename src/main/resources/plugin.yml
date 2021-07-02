@@ -1,0 +1,5 @@
+name: TokyoDisneyland
+main: xyz.yuzuki.halu.create.Main
+version: ${project.version}
+api-version: 1.12.2
+author: YuzukiHalu
