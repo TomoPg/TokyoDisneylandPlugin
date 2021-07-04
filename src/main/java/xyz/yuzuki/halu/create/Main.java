@@ -1,25 +1,44 @@
 package xyz.yuzuki.halu.create;
 
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import xyz.yuzuki.halu.create.Commands.HelloMessage;
+import xyz.yuzuki.halu.create.Config.MessageConfig;
+import xyz.yuzuki.halu.create.Events.Join;
+import xyz.yuzuki.halu.create.Scoreboard.Scoreboards;
 
 public class Main extends JavaPlugin {
+    public static Plugin getPlugin() {
+
+        return null;
+    }
+
+    // シングルクォーテーション ➔ ''
 
     //メインクラス
 
     @Override
     public void onEnable() {
 
-        getLogger().info("プラグインが起動しました");  //起動したらコンソールにメッセージを表示
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
 
-        saveDefaultConfig(); //config.ymlが存在しない場合はファイルに出力
+        MessageConfig.setup();
+        MessageConfig.get().addDefault("Message", "§d§lこんにちは！");
+        MessageConfig.get().options().copyDefaults(true);
+        MessageConfig.save();
 
-        FileConfiguration config = getConfig(); //config.ymlを読み込む
+        //コマンドクラス継承
+        getCommand("Hello").setExecutor(new HelloMessage());
+
+        //クラス継承
+        getServer().getPluginManager().registerEvents(new Scoreboards(this),this);
+        getServer().getPluginManager().registerEvents(new Join(this),this);
+
     }
 
     @Override
     public void onDisable() {
 
-        getLogger().info("プラグインが終了しました");  //終了したらコンソールにメッセージを表示
     }
 }

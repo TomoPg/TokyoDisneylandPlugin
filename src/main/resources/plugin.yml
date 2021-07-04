@@ -3,3 +3,6 @@ main: xyz.yuzuki.halu.create.Main
 version: ${project.version}
 api-version: 1.12.2
 author: YuzukiHalu
+commands:
+  hello:
+    description: メッセージを返してくれるコマンド
