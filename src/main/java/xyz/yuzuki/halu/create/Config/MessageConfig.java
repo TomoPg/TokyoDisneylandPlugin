@@ -22,7 +22,7 @@ public class MessageConfig {
             try{
                 file.createNewFile();
             }catch (IOException e){
-                //???????
+
             }
         }
         customFile = YamlConfiguration.loadConfiguration(file);

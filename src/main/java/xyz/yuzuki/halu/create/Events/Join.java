@@ -1,6 +1,7 @@
 package xyz.yuzuki.halu.create.Events;
 
 import jdk.tools.jlink.plugin.Plugin;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -21,10 +22,10 @@ public class Join implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         Player player = (Player)e.getPlayer();
         if (e.getPlayer().isOp()){
-            player.sendMessage(ChatColor.RED + "§lあなたは管理者権限を持っているため、" + ChatColor.GREEN + "§lゲームモードが" + ChatColor.WHITE + "§l§n【クリエイティブモード】" + ChatColor.GREEN + "§lに設定されました");
+            player.sendMessage(ChatColor.BLUE + "--------------------------------------------------\n" + ChatColor.RED + "§lあなたは管理者権限を持っているため、" + ChatColor.GREEN + "§lゲームモード" + ChatColor.RED + "§lが" + ChatColor.WHITE + "§l【クリエイティブモード】" + ChatColor.RED + "§lに設定されました" + ChatColor.GREEN + "\n \n§l現在" + ChatColor.AQUA + String.valueOf(Bukkit.getOnlinePlayers().size()) + ChatColor.GREEN +"§l 人のプレイヤーがオンラインです" + ChatColor.BLUE + "--------------------------------------------------");
             player.setGameMode(GameMode.CREATIVE);
         } else {
-        player.sendMessage(ChatColor.GREEN + "§lあなたのゲームモードが" + ChatColor.RED + "§l§n【アドベンチャーモード】" + ChatColor.GREEN + "§lに設定されました");
+        player.sendMessage(ChatColor.BLUE + "--------------------------------------------------\n" + ChatColor.GREEN + "§lあなたのゲームモードが" + ChatColor.RED + "§l【アドベンチャーモード】" + ChatColor.GREEN + "§lに設定されました" + ChatColor.GREEN + "\n \n§l現在" + ChatColor.AQUA + String.valueOf(Bukkit.getOnlinePlayers().size()) + ChatColor.GREEN +"§l 人のプレイヤーがオンラインです" + ChatColor.BLUE + "\n--------------------------------------------------");
         player.setGameMode(GameMode.ADVENTURE);
         }
     }

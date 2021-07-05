@@ -4,6 +4,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.yuzuki.halu.create.Commands.HelloMessage;
 import xyz.yuzuki.halu.create.Config.MessageConfig;
+import xyz.yuzuki.halu.create.Events.Fencegate;
 import xyz.yuzuki.halu.create.Events.Join;
 import xyz.yuzuki.halu.create.Scoreboard.Scoreboards;
 
@@ -14,6 +15,7 @@ public class Main extends JavaPlugin {
     }
 
     // シングルクォーテーション ➔ ''
+    //改行　➔\n
 
     //メインクラス
 
@@ -34,6 +36,7 @@ public class Main extends JavaPlugin {
         //クラス継承
         getServer().getPluginManager().registerEvents(new Scoreboards(this),this);
         getServer().getPluginManager().registerEvents(new Join(this),this);
+        getServer().getPluginManager().registerEvents(new Fencegate(this),this);
 
     }
 
